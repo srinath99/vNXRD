@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vNXRD", "vNXRD\vNXRD.csproj", "{53D02A53-0E26-4879-830A-CD0EC67B7341}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Install vWXR v085", "Install vWXR v085\Install vWXR v085.vdproj", "{22C9D249-DAB7-4556-A8C4-B38919CFB524}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "vNXRD Setup", "vNXRD Setup\vNXRD Setup.vdproj", "{22C9D249-DAB7-4556-A8C4-B38919CFB524}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

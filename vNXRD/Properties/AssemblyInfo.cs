@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("vNXRD")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HP Inc.")]
+[assembly: AssemblyCompany("Srinath Nandakumar")]
 [assembly: AssemblyProduct("vNXRD")]
-[assembly: AssemblyCopyright("Copyright © HP Inc. 2020")]
+[assembly: AssemblyCopyright("Copyright © Srinath Nandakumar 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
