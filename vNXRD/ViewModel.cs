@@ -14,6 +14,7 @@ using System.Windows.Threading;
 
 namespace vNXRD
 {
+
     class ViewModel : INotifyPropertyChanged
     {
         KeyboardListener KListener = new KeyboardListener();
@@ -21,7 +22,7 @@ namespace vNXRD
         bool shift;
         bool alt;
         private Brush _windowBackground;
-        private MapTileLayer _systemType;
+        private NexradTileLayer _systemType;
         private double _orientation;
         private double _brite;
         private LocationCollection _boundary;
@@ -48,14 +49,16 @@ namespace vNXRD
             KListener.KeyUp += new RawKeyEventHandler(KListener_KeyUp);
             Brite = 0.5;
 
-            SystemType = new MapTileLayer
+            SystemType = new NexradTileLayer
             {
                 SourceName = "ERAM",
                 Description = "© [Srinath Nandakumar & Iowa State University](http://mesonet.agron.iastate.edu/)",
                 TileSource = new TileSource { UriFormat = "https://web.ics.purdue.edu/~snandaku/atc/processor.php?x={x}&y={y}&z={z}" },
-                UpdateWhileViewportChanging = true
+                UpdateWhileViewportChanging = true,
+                MinZoomLevel = 7,
+                MaxZoomLevel = 11
             };
-
+            //https://wms.chartbundle.com/tms/1.0.0/sec/{z}/{x}/{y}.png?origin=nw
             timer.Interval = TimeSpan.FromSeconds(300);
             timer.Tick += timer_Tick;
             timer.Start();
@@ -97,12 +100,14 @@ namespace vNXRD
                 {
                     if (!SystemType.SourceName.Contains("ERAM"))
                     {
-                        SystemType = new MapTileLayer
+                        SystemType = new NexradTileLayer
                         {
                             SourceName = "ERAM" + time,
                             Description = "© [Srinath Nandakumar & Iowa State University](http://mesonet.agron.iastate.edu/)",
                             TileSource = new TileSource { UriFormat = "https://web.ics.purdue.edu/~snandaku/atc/processor.php?x={x}&y={y}&z={z}" },
-                            UpdateWhileViewportChanging = true
+                            UpdateWhileViewportChanging = true,
+                            MinZoomLevel = 6,
+                            MaxZoomLevel = 11
                         };
 
                         Orientation = 0;
@@ -117,12 +122,14 @@ namespace vNXRD
                 {
                     if (!SystemType.SourceName.Contains("STARS"))
                     {
-                        SystemType = new MapTileLayer
+                        SystemType = new NexradTileLayer
                         {
                             SourceName = "STARS" + time,
                             Description = "© [Srinath Nandakumar & Iowa State University](http://mesonet.agron.iastate.edu/)",
                             TileSource = new TileSource { UriFormat = "https://web.ics.purdue.edu/~snandaku/atc/processorS.php?x={x}&y={y}&z={z}" },
-                            UpdateWhileViewportChanging = true
+                            UpdateWhileViewportChanging = true,
+                            MinZoomLevel = 8,
+                            MaxZoomLevel = 13
                         };
 
                         Orientation = -15;
@@ -241,7 +248,7 @@ namespace vNXRD
             {
                 if (SystemType.SourceName.Contains("STARS"))
                 {
-                    SystemType = new MapTileLayer
+                    SystemType = new NexradTileLayer
                     {
                         SourceName = "STARS" + time,
                         Description = "© [Srinath Nandakumar & Iowa State University](http://mesonet.agron.iastate.edu/)",
@@ -251,7 +258,7 @@ namespace vNXRD
                 }
                 else if (SystemType.SourceName.Contains("ERAM"))
                 {
-                    SystemType = new MapTileLayer
+                    SystemType = new NexradTileLayer
                     {
                         SourceName = "ERAM" + time,
                         Description = "© [Srinath Nandakumar & Iowa State University](http://mesonet.agron.iastate.edu/)",
@@ -274,7 +281,7 @@ namespace vNXRD
             }
         }
 
-        public MapTileLayer SystemType
+        public NexradTileLayer SystemType
         {
             get { return _systemType; }
             set

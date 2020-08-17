@@ -62,6 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="NexradTileLayer.cs" />
     <Compile Include="ViewModel.cs" />
     <Compile Include="WindowServices.cs" />
     <Page Include="MainWindow.xaml">
